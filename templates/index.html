@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--Description:抖音无水印解析-->
+<!--Version:1.0-->
+<!--Author:大数据男孩-->
+<!--Author Url:https://bigdataboy.cn-->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>抖音视频无水印解析-大数据男孩</title>
+    <meta name="keywords" content="抖音视频解析,无水印解析,大户据男孩">
+    <meta name="description" content="抖音视频解析,无水印解析,大户据男孩">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!--[if lt IE 9]>
+    <script src="//lib.baomitu.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//lib.baomitu.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	<!-- 引入css  -->
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'layui/css/layui.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename = 'css/main.css') }}">
+	<!-- 导入的 Js -->
+	<script src="{{ url_for('static', filename = 'layui/layui.js') }}"></script>
+	<script src="https://cdn.bootcss.com/clipboard.js/1.7.1/clipboard.min.js"></script>
+
+</head>
+<body>
+<ul class="layui-nav">
+	<li class="layui-nav-item"><a href="">大数据男孩</a></li>
+</ul>
+<div class="layui-container">
+
+	<!-- 表单 -->
+	<div class="layui-row row-form">
+		<div class="layui-col-sm8 layui-col-sm-offset2 layui-col-lg4  layui-col-lg-offset4">
+			<div class="layui-tab layui-tab-card">
+				<ul class="layui-tab-titl">
+					<li class="layui-this layui-icon" style="text-align: center">&#xe62e;请输入视频链接&#xe62e;</li>
+				</ul>
+				<div class="layui-tab-content">
+					<div class="layui-tab-item layui-show">
+						<form class="layui-form layui-form-pane" action="">
+							<div class="layui-form-item">
+								<label class="layui-form-label">视频链接</label>
+								<div class="layui-input-block">
+									<input id="inturl" type="text" name="url" autocomplete="off" placeholder="请输入链接" class="layui-input">
+								</div>
+							</div>
+							<div class="layui-form-item">
+									<button type="reset" class="layui-btn  layui-btn-danger form-btn" >清空输入框</button>
+									<a id="jx" class="layui-btn form-btn" style="float: right">一键解析</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 结果 -->
+	<div id="infor" class="layui-row" style="display:none">
+		<div class="layui-col-sm8 layui-col-sm-offset2 layui-col-lg4  layui-col-lg-offset4" style="padding: 20px; background-color: #F2F2F2;">
+		<div class="layui-row layui-col-space15">
+			<div class="layui-card" style="margin-bottom: 0px">
+				<div class="layui-card-header" >视频标题：</div>
+				<div class="layui-card-body" id="title">
+				</div>
+			</div>
+			<div class="layui-card" style="margin-top: -8px">
+				<div class="layui-card-header">视频封面：</div>
+				<div class="layui-card-body" style="text-align: center">
+					<img id="img" width="50%" src="">
+				</div>
+			</div>
+			<div class="layui-card" >
+				<div class="layui-card-header">
+					<div class="layui-form-item">
+						<a id="img_run" target="_blank" class="layui-btn res-btn">查看略缩图（动）</a>
+						<a id="img1" target="_blank" class="layui-btn res-btn">查看略缩图（静）</a>
+					</div>
+				</div>
+				<div class="layui-card-body">
+					<div class="layui-form-item">
+						<a id="copyUrl" class="layui-btn res-btn" data-clipboard-text="">复制视频链接</a>
+						<a target="_blank" id="vUrl" class="layui-btn res-btn">在线观看视频</a>
+					</div>
+				</div>
+			</div>
+			<div id="show" style="display:none;text-align: center">已复制</div>
+			<div class="layui-card" >
+				<div class="layui-card-body">
+					<div class="layui-row">
+						<div class="alert alert-danger">点击在线观看按钮跳转到视频如果打开显示403请复制视频连接手动访问即可~</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- 说明 -->
+	<div class="layui-row" style="margin: 10px 0 10px 0">
+		<div class="layui-collapse layui-col-sm8 layui-col-sm-offset2 layui-col-lg4  layui-col-lg-offset4">
+			<div class="layui-colla-item">
+				<h2 class="layui-colla-title">Android手机上可以用吗？</h2>
+				<div class="layui-colla-content">
+					<p>可以的，Android手机在常用的Chrome、UC、360、QQ等浏览器上都可以很方便的使用本站。</p>
+				</div>
+			</div>
+			<div class="layui-colla-item">
+				<h2 class="layui-colla-title">iOS设备（iPhone、iPad、iPod）上点击下载视频按钮后，跳转到视频页面，并没有直接下载，怎么办？</h2>
+				<div class="layui-colla-content">
+					<p>因Safari及微信内置浏览器均不支持下载文件，所以保存视频需要借助第三方App来完成下载，建议iOS用户在App Store下载免费的Documents 6，然后在Documents的内置浏览器中使用本站，可以完美下载视频，并且Documents支持将下载的视频移到手机相册。</p>
+				</div>
+			</div>
+			<div class="layui-colla-item">
+				<h2 class="layui-colla-title">我在电脑上用的是IE浏览器，点下载视频按钮后，出现跟上面那用iPad的哥们一样的情况，跳转到视频页面，如何下载到本地呢？</h2>
+				<div class="layui-colla-content">
+					<p>电脑上少数浏览器不支持直接下载，但可以在下载视频按钮上点击右键，然后选择"目标另存为"或"链接存储为"来下载视频；或者到跳转后的视频页面，在视频画面上点击右键，然后选择"视频另存为"来下载视频。当然，我们更推荐在电脑上使用如谷歌Chrome浏览器、360浏览器极速模式、QQ浏览器极速模式等现代浏览器来获得最佳上网体验。</p>
+				</div>
+			</div>
+			<div class="layui-colla-item">
+				<h2 class="layui-colla-title">如果还不会使用</h2>
+				<div class="layui-colla-content">
+					<p><a target="_blank" href="https://bigdataboy.cn/post-159.html">点击访问更详细教程</a></p>
+					<br>
+					<p><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=876545500&amp;site=qq&amp;menu=yes"><code>客服QQ：876545500</code></a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 版权 -->
+	<div class="layui-footer">
+			<footer>
+				<p style="text-align: center!important;">Copyright © 2020 <a href="https://bigdataboy.cn">大数据男孩</a> All rights reserved </p>
+				<br>
+				<p style="text-align: center!important;"><a href="http://www.beian.miit.gov.cn" rel="nofollow" target="_blank">蜀ICP备19029392号</a>
+				</p>
+				<br>
+			</footer>
+	</div>
+</div>
+</body>
+<script src="{{ url_for('static', filename = 'js/main.js') }}"></script>
+</html>

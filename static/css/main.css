@@ -1,0 +1,18 @@
+.form-btn{
+    width: 48%;
+}
+
+.res-btn{
+    width: 47%;
+}
+
+.row-form{
+    margin-top: 40px
+}
+
+@media screen and (max-width: 1200px){
+    .phone-width {
+        width: 375px;
+        margin: 0 auto;
+    }
+}
