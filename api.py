@@ -61,7 +61,7 @@ class DYSpider:
         # 标题
         desc = item_list.get("desc")
         # 原视频
-       download_addr = item_list.get("video").get("play_addr").get("url_list")[0]
+       download_addr = item_list.get("video").get("play_addr_lowbr").get("url_list")[0]
         # 动图
         dynamic_cover = item_list.get("video").get("dynamic_cover").get("url_list")
         # 静图
