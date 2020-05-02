@@ -1,16 +1,19 @@
 # Flask_douyin
-使用 Python Web框架 Flask 编写的抖音无水印下载
+使用 Python Web框架 Flask 编写的抖音无水印下载，可直接部署。
 
 ## 最近更新时间
+
+演示地址：https://douyin.bigdataboy.cn/
+
+2020.05.05：已更新，正常使用
 2020.04.27：抖音结构更新，以修复视频有水印。（失效了）
+
 ### 特点
 前端：LayUI
 
 后端：Flask
 
 开发语言：Python
-
-演示地址：https://douyin.bigdataboy.cn/
 
 解析完全本地完成
 
