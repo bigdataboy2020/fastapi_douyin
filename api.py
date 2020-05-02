@@ -56,17 +56,24 @@ class DYSpider:
                                                                             "dytk": self.dytk,
                                                                         })
         data_json = r.json()
-        print(data_json)
+        print(r.text)
         item_list = data_json.get("item_list")[0]
         # 标题
         desc = item_list.get("desc")
         # 原视频
-       download_addr = item_list.get("video").get("play_addr_lowbr").get("url_list")[0]
+        download_addr = item_list.get("video").get("play_addr").get("url_list")[0]
+        video_url = self.get_video(download_addr)
         # 动图
         dynamic_cover = item_list.get("video").get("dynamic_cover").get("url_list")
         # 静图
         origin_cover = item_list.get("video").get("origin_cover").get("url_list")
-        return {"title":desc,"img_run":dynamic_cover,"img":origin_cover,"url":download_addr,'code': '200'}
+        return {"title":desc,"img_run":dynamic_cover,"img":origin_cover,"url":video_url ,'code': '200'}
+
+    # 获取真实地址
+    def get_video(self,url):
+        url = url.replace("playwm","play")
+        video_url = requests.get(url=url,headers=self.headers)
+        return video_url.url
 
     def run(self):
         res = {'code': '200', 'title': "", 'img': "", 'url': ""}
