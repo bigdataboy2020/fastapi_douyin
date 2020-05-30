@@ -13,10 +13,10 @@
 ## 使用到的技术
 后端：
 - 语言：Python
-- WEB框架：FastAPI 
-- 服务器框架：Uvicorn
-- 反向代理：Nginx
-- 进程管理：Supervisor 
+- WEB框架：FastAPI （现代、快速（高性能）的 Web 框架）
+- 服务器框架：Uvicorn（基于asyncio开发的一个轻量级高效的web服务器框架）
+- 反向代理：Nginx (高性能的HTTP和反向代理web服务器)
+- 进程管理：Supervisor (ython开发的一套通用的进程管理程序)
 
 前端：
 - UI框架：LayUI
