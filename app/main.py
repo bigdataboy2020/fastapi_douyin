@@ -45,6 +45,6 @@ app.include_router(douyin.router)
 if __name__ == '__main__':
     uvicorn.run(
         app=app,
-        host=settings.host,
-        port=settings.port,
+        host="127.0.0.1",
+        port=5000,
     )
