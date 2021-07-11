@@ -6,7 +6,6 @@
 import requests
 import re, json
 from requests.utils import unquote
-from utils import log
 
 
 class DYSpider(object):
